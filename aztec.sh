@@ -233,6 +233,11 @@ services:
       sh -c "node --no-warnings /usr/src/yarn-project/aztec/dest/bin/index.js start --network alpha-testnet --node --archiver --sequencer \${BLOB_FLAG:-}"
     volumes:
       - /root/.aztec/alpha-testnet/data/:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "2"
 EOF
   chmod 644 "$AZTEC_DIR/docker-compose.yml"
 
